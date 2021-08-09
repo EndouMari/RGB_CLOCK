@@ -71,10 +71,10 @@ class RGBClockView: UIView {
     required init?(coder: NSCoder) { fatalError() }
     
     @objc private func updateClockHands() {
-//        let hour = calendar.component(.hour, from: currentTime)
-//        let minute = calendar.component(.minute, from: currentTime)
-//        hourHandView.transform = CGAffineTransform(rotationAngle: (CGFloat(hour) * 60 + CGFloat(minute)) * 0.5 * CGFloat.pi / 180)
-//        minuteHandView.transform = CGAffineTransform(rotationAngle: CGFloat(minute) * 6 * CGFloat.pi / 180)
+        let hour = calendar.component(.hour, from: currentTime)
+        let minute = calendar.component(.minute, from: currentTime)
+        hourHandView.transform = CGAffineTransform(rotationAngle: (CGFloat(hour) * 60 + CGFloat(minute)) * 0.5 * CGFloat.pi / 180)
+        minuteHandView.transform = CGAffineTransform(rotationAngle: CGFloat(minute) * 6 * CGFloat.pi / 180)
     }
     
     private func resetClockHands() {
@@ -84,13 +84,13 @@ class RGBClockView: UIView {
     }
     
     func start() {
-//        resetClockHands()
-//        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
-//        let from = atan2(secondHandView.transform.b, secondHandView.transform.a)
-//        rotateAnimation.toValue = CGFloat(CGFloat.pi * 2.0 + from)
-//        rotateAnimation.duration = 60
-//        rotateAnimation.repeatCount = .infinity
-//        secondHandView.layer.add(rotateAnimation, forKey: "secondHandAnimation")
+        resetClockHands()
+        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+        let from = atan2(secondHandView.transform.b, secondHandView.transform.a)
+        rotateAnimation.toValue = CGFloat(CGFloat.pi * 2.0 + from)
+        rotateAnimation.duration = 60
+        rotateAnimation.repeatCount = .infinity
+        secondHandView.layer.add(rotateAnimation, forKey: "secondHandAnimation")
     }
     
     class RGBHandView: UIView {
