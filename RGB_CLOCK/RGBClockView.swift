@@ -28,7 +28,7 @@ class RGBClockView: UIView {
         backgroundColor = .init(red: 24/255, green: 24/255, blue: 24/255, alpha: 1)
         
         addSubview(hourHandView)
-        hourHandView.layer.compositingFilter = "lightenBlendMode"
+        hourHandView.layer.compositingFilter = "screenBlendMode"
         hourHandView.translatesAutoresizingMaskIntoConstraints = false
         hourHandView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.7).isActive = true
         hourHandView.heightAnchor.constraint(equalTo: hourHandView.widthAnchor, multiplier: 0.5).isActive = true
@@ -37,7 +37,7 @@ class RGBClockView: UIView {
         hourHandView.layer.anchorPoint = .init(x: 0.5, y: 1)
         
         addSubview(minuteHandView)
-        minuteHandView.layer.compositingFilter = "lightenBlendMode"
+        minuteHandView.layer.compositingFilter = "screenBlendMode"
         minuteHandView.translatesAutoresizingMaskIntoConstraints = false
         minuteHandView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 0.75).isActive = true
         minuteHandView.heightAnchor.constraint(equalTo: minuteHandView.widthAnchor, multiplier: 0.5).isActive = true
@@ -71,10 +71,10 @@ class RGBClockView: UIView {
     required init?(coder: NSCoder) { fatalError() }
     
     @objc private func updateClockHands() {
-        let hour = calendar.component(.hour, from: currentTime)
-        let minute = calendar.component(.minute, from: currentTime)
-        hourHandView.transform = CGAffineTransform(rotationAngle: (CGFloat(hour) * 60 + CGFloat(minute)) * 0.5 * CGFloat.pi / 180)
-        minuteHandView.transform = CGAffineTransform(rotationAngle: CGFloat(minute) * 6 * CGFloat.pi / 180)
+//        let hour = calendar.component(.hour, from: currentTime)
+//        let minute = calendar.component(.minute, from: currentTime)
+//        hourHandView.transform = CGAffineTransform(rotationAngle: (CGFloat(hour) * 60 + CGFloat(minute)) * 0.5 * CGFloat.pi / 180)
+//        minuteHandView.transform = CGAffineTransform(rotationAngle: CGFloat(minute) * 6 * CGFloat.pi / 180)
     }
     
     private func resetClockHands() {
@@ -84,13 +84,13 @@ class RGBClockView: UIView {
     }
     
     func start() {
-        resetClockHands()
-        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
-        let from = atan2(secondHandView.transform.b, secondHandView.transform.a)
-        rotateAnimation.toValue = CGFloat(CGFloat.pi * 2.0 + from)
-        rotateAnimation.duration = 60
-        rotateAnimation.repeatCount = .infinity
-        secondHandView.layer.add(rotateAnimation, forKey: "secondHandAnimation")
+//        resetClockHands()
+//        let rotateAnimation = CABasicAnimation(keyPath: "transform.rotation")
+//        let from = atan2(secondHandView.transform.b, secondHandView.transform.a)
+//        rotateAnimation.toValue = CGFloat(CGFloat.pi * 2.0 + from)
+//        rotateAnimation.duration = 60
+//        rotateAnimation.repeatCount = .infinity
+//        secondHandView.layer.add(rotateAnimation, forKey: "secondHandAnimation")
     }
     
     class RGBHandView: UIView {
